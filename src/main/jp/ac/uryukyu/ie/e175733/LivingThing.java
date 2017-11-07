@@ -4,7 +4,7 @@ public class LivingThing {
     String name;
     int hitPoint;
     int attack;
-    boolean dead;
+    boolean dead=true;
     public LivingThing(String name,int hitPoint,int attack){
         this.name=name;
         this.hitPoint=hitPoint;
@@ -13,13 +13,16 @@ public class LivingThing {
     public boolean isDead(){
 
     }
-    public String getName(){
+    public String getName(){return name;}
 
-    }
     public void attack(LivingThing opponent){
 
     }
     public void wounded(int damage){
-
+        hitPoint-=damage;
+        if(hitPoint>0) {
+            dead=true;
+            System.out.printf("%sは倒れた。\n", this.name);
+        }
     }
 }
