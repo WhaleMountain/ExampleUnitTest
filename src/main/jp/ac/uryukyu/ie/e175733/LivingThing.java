@@ -15,6 +15,9 @@ public class LivingThing {
 
     }
     public void attack(LivingThing opponent){
+
+    }
+    public void wounded(int damage){
         
     }
 }
