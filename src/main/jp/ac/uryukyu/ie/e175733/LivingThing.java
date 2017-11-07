@@ -6,7 +6,9 @@ public class LivingThing {
     int attack;
     boolean dead;
     public LivingThing(String name,int hitPoint,int attack){
-
+        this.name=name;
+        this.hitPoint=hitPoint;
+        this.attack=attack;
     }
     public boolean isDead(){
 
@@ -18,6 +20,6 @@ public class LivingThing {
 
     }
     public void wounded(int damage){
-        
+
     }
 }
