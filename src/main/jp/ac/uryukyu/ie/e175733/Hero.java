@@ -9,36 +9,29 @@ public class Hero extends LivingThing{
      *  boolean dead; //敵の生死状態。true=死亡。
      * Created by tnal on 2016/11/13.
      */
-        String name;
-        int hitPoint;
-        int attack;
-        boolean dead;
 
-        /**
-         * コンストラクタ。名前、最大HP、攻撃力を指定する。
-         * @param name ヒーロー名
-         * @param maximumHP ヒーローのHP
-         * @param attack ヒーローの攻撃力
-         */
-        public Hero (String name, int maximumHP, int attack) {
-            super(name,maximumHP,attack);
-            this.name = name;
-            hitPoint = maximumHP;
-            this.attack = attack;
-            dead = false;
-            System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
-        }
+    /**
+     * コンストラクタ。名前、最大HP、攻撃力を指定する。
+     * @param name ヒーロー名
+     * @param maximumHP ヒーローのHP
+     * @param attack ヒーローの攻撃力
+     */
+    public Hero (String name, int maximumHP, int attack) {
+        super(name,maximumHP,attack);
+        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", getName(), getHitPoint(), getAttack());
+    }
 
-        /**
-         * 自身へ攻撃されたときのダメージ処理をするメソッド。
-         * 指定されたダメージを hitPoint から引き、死亡判定を行う。
-         * @param damage 受けたダメージ
-         */
+    /**
+     * 自身へ攻撃されたときのダメージ処理をするメソッド。
+     * 指定されたダメージを hitPoint から引き、死亡判定を行う。
+     * @param damage 受けたダメージ
+     */
         public void wounded(int damage){
-            hitPoint -= damage;
-            if( hitPoint < 0 ) {
-                dead = true;
-                System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
+            setHitPoint(damage);
+            if(getHitPoint()<=0){
+                System.out.printf("勇者%sは倒れた。\n", getName());
+                setDead(true);
             }
         }
+
 }

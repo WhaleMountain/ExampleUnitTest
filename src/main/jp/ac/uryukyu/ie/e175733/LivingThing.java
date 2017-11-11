@@ -2,28 +2,37 @@ package jp.ac.uryukyu.ie.e175733;
 
 public class LivingThing {
     String name;
-    int hitPoint;
-    int attack;
-    boolean dead;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
+
     public LivingThing(String name,int hitPoint,int attack){
         this.name=name;
         this.hitPoint=hitPoint;
         this.attack=attack;
         dead=false;
     }
+
     public boolean isDead(){return dead;}
 
     public String getName(){return name;}
 
-    public void attack(LivingThing opponent){
-        int damage=(int)(Math.random()*attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", this.name, opponent.name, damage);
-        opponent.wounded(damage);
+    public void attack(LivingThing opponent) {
+        if (!isDead()) {
+            int damage = (int) (Math.random() * attack);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", this.name, opponent.name, damage);
+            opponent.wounded(damage);
+        }
     }
+    public void setHitPoint(int damage){this.hitPoint-=damage;}
+    public int getHitPoint(){return hitPoint;}
+    public int getAttack(){return attack;}
+    public void setDead(boolean dead){this.dead=dead;}
+
     public void wounded(int damage){
         hitPoint-=damage;
-        if(hitPoint>0) {
-            dead=true;
+        if(hitPoint<=0) {
+            this.dead=true;
             System.out.printf("%sは倒れた。\n", this.name);
         }
     }
