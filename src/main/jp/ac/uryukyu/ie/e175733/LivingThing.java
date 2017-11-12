@@ -1,7 +1,7 @@
 package jp.ac.uryukyu.ie.e175733;
 
 public class LivingThing {
-    String name;
+    private String name;
     private int hitPoint;
     private int attack;
     private boolean dead;
