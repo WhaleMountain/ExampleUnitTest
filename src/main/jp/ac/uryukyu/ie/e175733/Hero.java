@@ -25,6 +25,7 @@ public class Hero extends LivingThing{
      * 指定されたダメージを hitPoint から引き、死亡判定を行う。
      * @param damage 受けたダメージ
      */
+    @Override
         public void wounded(int damage){
             setHitPoint(damage);
             if(getHitPoint()<=0){
